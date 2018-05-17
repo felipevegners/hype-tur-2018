@@ -13,21 +13,25 @@ sass        = require('gulp-sass');
 sourceMaps  = require('gulp-sourcemaps');
 imagemin    = require('gulp-imagemin');
 minifyCSS   = require('gulp-minify-css');
-browserSync = require('browser-sync');
+browserSync = require('browser-sync').create();
 autoprefixer = require('gulp-autoprefixer');
 gulpSequence = require('gulp-sequence').use(gulp);
 shell       = require('gulp-shell');
 plumber     = require('gulp-plumber');
 
 gulp.task('browserSync', function() {
-    browserSync({
-        server: {
-            baseDir: "app/"
-        },
+
+  var files = ['hype-tur/*.php', 'hype-tur/*.css'];
+    browserSync.init(files, {
+        // server: {
+        //     baseDir: "app/"
+        // },
         options: {
             reloadDelay: 250
         },
-        notify: false
+        notify: false,
+
+        proxy: "http://localhost/"
     });
 });
 
@@ -46,7 +50,8 @@ gulp.task('images-deploy', function() {
     gulp.src(['app/images/**/*', '!app/images/README'])
         //prevent pipe breaking caused by errors from gulp plugins
         .pipe(plumber())
-        .pipe(gulp.dest('dist/images'));
+        .pipe(gulp.dest('hype-tur/images'));
+
 });
 
 //compiling our Javascripts
@@ -76,7 +81,7 @@ gulp.task('scripts-deploy', function() {
                 //compress :D
                 .pipe(uglify())
                 //where we will store our finalized, compressed script
-                .pipe(gulp.dest('dist/scripts'));
+                .pipe(gulp.dest('hype-tur/scripts'));
 });
 
 //compiling our SCSS files
@@ -106,11 +111,11 @@ gulp.task('styles', function() {
                 //catch errors
                 .on('error', gutil.log)
                 //the final filename of our combined css file
-                .pipe(concat('styles.css'))
+                .pipe(concat('style.css'))
                 //get our sources via sourceMaps
                 .pipe(sourceMaps.write())
                 //where to save our final, compressed css file
-                .pipe(gulp.dest('app/styles'))
+                .pipe(gulp.dest('hype-tur'))
                 //notify browserSync to refresh
                 .pipe(browserSync.reload({stream: true}));
 });
@@ -131,16 +136,16 @@ gulp.task('styles-deploy', function() {
                   cascade:  true
                 }))
                 //the final filename of our combined css file
-                .pipe(concat('styles.css'))
+                .pipe(concat('style.css'))
                 .pipe(minifyCSS())
                 //where to save our final, compressed css file
-                .pipe(gulp.dest('dist/styles'));
+                .pipe(gulp.dest('hype-tur'));
 });
 
 //basically just keeping an eye on all HTML files
 gulp.task('html', function() {
     //watch any and all HTML files and refresh when something changes
-    return gulp.src('app/*.html')
+    return gulp.src('hype-tur/*.php')
         .pipe(plumber())
         .pipe(browserSync.reload({stream: true}))
         //catch errors
@@ -148,30 +153,30 @@ gulp.task('html', function() {
 });
 
 //migrating over all HTML files for deployment
-gulp.task('html-deploy', function() {
-    //grab everything, which should include htaccess, robots, etc
-    gulp.src('app/*')
-        //prevent pipe breaking caused by errors from gulp plugins
-        .pipe(plumber())
-        .pipe(gulp.dest('dist'));
-
-    //grab any hidden files too
-    gulp.src('app/.*')
-        //prevent pipe breaking caused by errors from gulp plugins
-        .pipe(plumber())
-        .pipe(gulp.dest('dist'));
-
-    gulp.src('app/fonts/**/*')
-        //prevent pipe breaking caused by errors from gulp plugins
-        .pipe(plumber())
-        .pipe(gulp.dest('dist/fonts'));
-
-    //grab all of the styles
-    gulp.src(['app/styles/*.css', '!app/styles/styles.css'])
-        //prevent pipe breaking caused by errors from gulp plugins
-        .pipe(plumber())
-        .pipe(gulp.dest('dist/styles'));
-});
+// gulp.task('html-deploy', function() {
+//     //grab everything, which should include htaccess, robots, etc
+//     gulp.src('app/*')
+//         //prevent pipe breaking caused by errors from gulp plugins
+//         .pipe(plumber())
+//         .pipe(gulp.dest('hype-tur'));
+//
+//     //grab any hidden files too
+//     gulp.src('app/.*')
+//         //prevent pipe breaking caused by errors from gulp plugins
+//         .pipe(plumber())
+//         .pipe(gulp.dest('hype-tur'));
+//
+//     gulp.src('app/fonts/**/*')
+//         //prevent pipe breaking caused by errors from gulp plugins
+//         .pipe(plumber())
+//         .pipe(gulp.dest('hype-tur/fonts'));
+//
+//     //grab all of the styles
+//     gulp.src(['app/styles/*.css', '!app/styles/style.css'])
+//         //prevent pipe breaking caused by errors from gulp plugins
+//         .pipe(plumber())
+//         .pipe(gulp.dest('hype-tur'));
+// });
 
 //cleans our dist directory in case things got deleted
 gulp.task('clean', function() {
@@ -183,11 +188,11 @@ gulp.task('clean', function() {
 //create folders using shell
 gulp.task('scaffold', function() {
   return shell.task([
-      'mkdir dist',
-      'mkdir dist/fonts',
-      'mkdir dist/images',
-      'mkdir dist/scripts',
-      'mkdir dist/styles'
+      'mkdir hype-tur',
+      'mkdir hype-tur/fonts',
+      'mkdir hype-tur/images',
+      'mkdir hype-tur/scripts',
+      'mkdir hype-tur/styles'
     ]
   );
 });
@@ -203,8 +208,8 @@ gulp.task('default', ['browserSync', 'scripts', 'styles'], function() {
     gulp.watch('app/scripts/src/**', ['scripts']);
     gulp.watch('app/styles/scss/**', ['styles']);
     gulp.watch('app/images/**', ['images']);
-    gulp.watch('app/*.html', ['html']);
+    gulp.watch('app/*.php', ['html']);
 });
 
 //this is our deployment task, it will set everything for deployment-ready files
-gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy'], 'html-deploy'));
+gulp.task('deploy', gulpSequence('clean', 'scaffold', ['scripts-deploy', 'styles-deploy', 'images-deploy']));
