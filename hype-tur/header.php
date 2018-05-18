@@ -10,6 +10,27 @@
     </head>
     <body <?php body_class(); ?>>
       <header>
-        <h1><?php bloginfo('name'); ?></h1>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-2"><h1>Hype Tur Logo</h1></div>
+            <div class="col-md-6 offset-md-4">
+              <ul>
+                <li>Home</li>
+                <li>Serviços</li>
+                <li>Quem somos</li>
+                <li>Blog</li>
+                <li>Contato</li>
+                <li>Facebook</li>
+                <li>Instagram</li>
+                <li>PT</li>
+                <li>EN</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
         <p><?php bloginfo('description'); ?></p>
+        <nav>
+          <!-- <?php wp_nav_menu(); ?> -->
+        </nav>
       </header>
