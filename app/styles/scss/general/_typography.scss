@@ -1,0 +1,52 @@
+// Hype Tur Theme Typography
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,400i,700,700i');
+
+// Font Family
+$title-font: 'Roboto Slab', serif;
+$normal-font: 'Roboto', sans-serif;
+
+// Font Weigth
+$title-regular: 400;
+$title-bold: 700;
+$normal-regular: 400;
+$normal-bold: 700;
+
+// Mixins for italic font
+@mixin normal-regular-i {
+  font-style: italic;
+  font-weight: $normal-regular;
+}
+@mixin normal-bold-i {
+  font-style: italic;
+  font-weight: $normal-bold;
+}
+
+// Mixin for headings
+@mixin heading-1 {
+  font-family: $title-font;
+  font-weight: $title-bold;
+  font-size: 1rem * 2;
+  line-height: 1.5;
+}
+
+@mixin heading-2 {
+  @extend heading-1;
+  font-size: 0.61;
+}
+
+@mixin heading-3 {
+  @extend heading-2;
+  font-size: 0.72;
+}
+
+@mixin paragraph {
+  font-family: $normal-font;
+  font-weight: $normal-regular;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@mixin paragraph-i {
+  @extend paragraph;
+  @extend normal-regular-i;
+}

@@ -1,5 +1,11 @@
 <footer>
-  <p><?php bloginfo('name') ?> - &copy; <?php echo date('Y'); ?></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p><?php bloginfo('name') ?> - &copy; <?php echo date('Y'); ?>. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </div>
 </footer>
 <?php wp_footer(); ?>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
