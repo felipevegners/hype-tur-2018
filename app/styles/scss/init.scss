@@ -18,6 +18,16 @@ Version: 1.0
 
 //global things
 // @import 'general/_reset';
-@import 'layout/_main';
+@import 'general/_typography';
+@import 'general/_colors';
+@import 'general/_ui-elements';
 
-//pages
+//Layouts
+@import 'layout/_main';
+@import 'layout/_nav';
+@import 'layout/_destination-detail';
+@import 'layout/_destination-about';
+@import 'layout/_services';
+@import 'layout/_about-us';
+@import 'layout/_testmonials';
+@import 'layout/_blog-section';

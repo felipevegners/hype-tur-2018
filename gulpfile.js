@@ -65,7 +65,7 @@ gulp.task('scripts', function() {
                 //catch errors
                 .on('error', gutil.log)
                 //where we will store our finalized, compressed script
-                .pipe(gulp.dest('app/scripts'))
+                .pipe(gulp.dest('hype-tur/scripts'))
                 //notify browserSync to refresh
                 .pipe(browserSync.reload({stream: true}));
 });

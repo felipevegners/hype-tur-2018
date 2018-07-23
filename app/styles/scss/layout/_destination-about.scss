@@ -1,0 +1,101 @@
+// Styles for Destination About Section
+.destination-price {
+    margin: 2rem 0;
+}
+.destination-about {
+    margin-top: 24px;
+    padding: 5rem 0;
+    background: $second-light-color url('images/world-map.png') center center /contain no-repeat;
+}
+
+// div.row.col-md-10.offset-md-1:before {
+//         content: '';
+//         position: absolute;
+//         left: -49px;
+//         top: -60px;
+//         height: 60%;
+//         border-left: 1px dashed $main-color;
+// }
+
+// div.row.col-md-10.offset-md-1:after {
+//     content: '';
+//     position: absolute;
+//     bottom: 50%;
+//     left: calc(-49px - (12px/2));
+//     width: 12px;
+//     height: 12px;
+//     border-radius: 50%;
+//     background: $main-color;
+// }
+
+.package-icon {
+    &:after {
+        content: '+';
+        position: absolute;
+        top: 0;
+        right: -13px;
+        font-size: 3rem;
+        color: $main-color;
+    }
+    &:last-of-type:after {
+        display: none;
+    }
+}
+
+.icon-wrapper {
+    @include icon-wrapper;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    & img.icon {
+        position: relative;
+        top: -3px;
+        width: 32px;
+        height: 32px;
+    }
+
+    & img.icon.-car {
+        position: relative;
+        top: -1px;
+        width: 40px;
+        height: auto;
+    }
+}
+
+.icon-label {
+    @include paragraph-strong;
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    text-transform: uppercase;
+}
+
+.package-price {
+    padding-left: 2rem;
+
+    &:before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        left: 0;
+        border-left: 2px solid $main-color;
+    }
+}
+
+button.buy-package {
+    @include button-std;
+    background: $main-color;
+    margin: 2rem 0 0;
+
+    &:hover {
+        background-color: darken($main-color, 10%);
+        letter-spacing: 0.2pt;
+    }
+
+    &:active {
+        background-color: $main-color;
+    }
+}
