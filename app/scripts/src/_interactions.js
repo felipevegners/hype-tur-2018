@@ -1,20 +1,53 @@
-// var $j = jQuery.noConflict();
+$(document).ready(function(){
 
-// $j(function(){
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:0,
+        nav:true,
+        autoplay:true,
+        autoplayTimeout:5000,
+        autoplayHoverPause:false,
+        animateOut: 'fadeOut',
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    });
 
-//     $('.nav-link').on('click', function() {
-//         $('.nav-link').removeClass('active');
-//         $(this).addClass('active');
-//       });
+    $('.single-testimonial').owlCarousel({
+        loop:true,
+        margin:0,
+        nav:true,
+        dots: true,
+        autoplay:true,
+        autoplayTimeout:5000,
+        autoplayHoverPause:false,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            1000:{
+                items:1
+            }
+        }
+    });
 
-    
-// });
+  });
 
 function myFunction(e) {
-    var elems = document.querySelector(".active");
+    var elems = document.querySelector(".menu-active");
     if(elems !==null){
-     elems.classList.remove("active");
+     elems.classList.remove("menu-active");
     }
-   e.target.className = "nav-link active";
+   e.target.className = "nav-link menu-active";
   }
-

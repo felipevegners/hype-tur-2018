@@ -31,7 +31,7 @@ gulp.task('browserSync', function() {
         },
         notify: false,
 
-        proxy: "http://localhost/"
+        proxy: "http://localhost:8080"
     });
 });
 

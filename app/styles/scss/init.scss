@@ -22,6 +22,9 @@ Version: 1.0
 @import 'general/_colors';
 @import 'general/_ui-elements';
 
+// Owl Carousel
+@import 'owl-carousel/owl.carousel';
+
 //Layouts
 @import 'layout/_main';
 @import 'layout/_nav';
@@ -31,3 +34,5 @@ Version: 1.0
 @import 'layout/_about-us';
 @import 'layout/_testmonials';
 @import 'layout/_blog-section';
+@import 'layout/contact-section';
+@import 'layout/footer';

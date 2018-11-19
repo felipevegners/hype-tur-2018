@@ -1,0 +1,30 @@
+.contact-section {
+  padding: 5rem 0 2rem 0;
+  background: $main-color;
+  font-weight: 300;
+  color: $white;
+
+  h1, p {
+    color: $white;
+  }
+
+  label {
+    margin: 0;
+  }
+
+  button {
+    margin: 1rem 0;
+    @include button-std;
+    background: $second-color;
+    color: $main-color;
+    &:hover {
+        background-color: darken($second-color, 10%);
+        letter-spacing: 0.2pt;
+    }
+  }
+
+  small {
+    opacity: 0.5 !important;
+    line-height: 1 !important;
+  }
+}

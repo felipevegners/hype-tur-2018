@@ -1,7 +1,7 @@
 {
-  "name": "YourProject",
-  "version": "0.0.1",
-  "description": "Description of your project",
+  "name": "Hype Tur Theme",
+  "version": "1.0",
+  "description": "Hype Tur Agency Develop WP Theme",
   "dependencies": {
     "bootstrap": "^4.1.1"
   },
