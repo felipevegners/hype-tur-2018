@@ -1,9 +1,9 @@
 //Styles for Destination Package Section
 .destination-section {
-    height: calc(100vh - 60px);
-    &>.container>.row {
-        height: calc(100vh - 60px);
-    }
+    height: auto;
+    // &>.container>.row {
+    //     height: calc(100vh - 60px);
+    // }
 }
 
 .destination-detail {
