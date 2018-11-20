@@ -2,15 +2,15 @@
  * 	Default theme - Owl Carousel CSS File
  */
 
-$color-base:			#869791 !default;
+$color-base:			$main-color !default;
 $color-white:			#FFF !default;
 $color-gray:			#D6D6D6 !default;
 
 //nav
 
 $nav-color: 			$color-white !default;
-$nav-color-hover:		$color-white !default;
-$nav-font-size: 		14px !default;
+$nav-color-hover:		$second-color !default;
+$nav-font-size: 		18px !important;
 $nav-rounded: 			3px !default;
 $nav-margin: 			5px !default;
 $nav-padding: 			4px 7px !default;

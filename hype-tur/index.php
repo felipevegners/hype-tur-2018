@@ -1,6 +1,6 @@
 <?php   get_header(); ?>
 <!-- HERO IMAGE -->
-<div class="owl-carousel owl-theme">
+<div class="owl-carousel owl-theme promo-package">
 <?php
     $args = array(
     'post_type'	  => 'promo-package',
@@ -14,7 +14,7 @@
     foreach ($schedules as $schedule) {
     $schedule_meta = get_post_meta($schedule->ID, '', true);
   ?>
-<section class="destination-section" style="background:url(<?php echo $schedule_meta['picture_url'][0] ?>) top center/cover no-repeat;">
+<section class="destination-section" style="background:url(<?php echo $schedule_meta['picture_url'][0] ?>) center center/cover no-repeat;">
   <div class="container">
     <div class="row">
       <div class="destination-detail">
@@ -293,9 +293,8 @@
         </div>
         <div class="col-md-5 inset-md-1">
           <h4 class="quotes-icon"></h4>
-          <p>A Hype Tur cuidou de tudo quando resolvi conhecer a Europa e realmente a viagem foi perfeita! Agora estou planejando
-            um mochilão pela Ásia e com certeza viajarei com as meninas de novo. Obrigado!</p>
-          <h5>Cléo Pires, 35 anos - Atriz</h5>
+          <p>Lorem Ipsum sit dolor amet, dolor sit amet lorem ipsum ipsum</p>
+          <h5>Tania Pachedo, 35 anos - Empresária</h5>
         </div>
       </div>
     </div>
@@ -347,7 +346,7 @@
         <div class="row">
           <div class="col-md-12">
           <button type="button" class="show-full-post">
-            <a href="<?php the_permalink(); ?>">Ver todos os posts</a>
+            <a href="single.php">Ver todos os posts</a>
           </button>
           </div>
         </div>
@@ -390,16 +389,16 @@
             <input type="checkbox" name="" id="emailMe" class="form-check-input">
             <label for="emailMe">Desejo receber novidades e promoções por e-mail</label>
           </div>
-          <button type="submit" name="button" class="mt-4">Enviar mensagem</button>
+          <a href="#" class="mt-4 btn">Enviar mensagem</a>
         </form>
       </div>
       <div class="col-md-5 offset-md-1">
         <img src="<?php bloginfo('template_url');?>/images/jundiai-map.png" alt="" width="100%">
         <div class="row mt-4">
           <div class="col-md-3">
-            <img src="<?php bloginfo('template_url');?>/images/brand/typo-brand.svg" alt="" width="100%">
+            <img src="<?php bloginfo('template_url');?>/images/brand/normal-brand.svg" alt="" width="100%">
           </div>
-          <div class="col-md-9">
+          <div class="col-md-9 company-info">
             <p class="mb-0">A.O. PACHECO VIAGENS E TURISMO - ME</p>
             <p class="mb-0">CNPJ 08.345.543/0001-78</p>
           </div>
@@ -415,8 +414,8 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <button type="button" class="d-block">Autorização de Débito</button>
-            <small>Faça o download e preencha corretamente os campos para autorizar o débito das despesas de sua viagem.</small>
+            <a href="#" class="mt-4 btn debit-form">Autorização de Débito</a>
+            <small>*Faça o download e preencha corretamente os campos para autorizar o débito das despesas de sua viagem.</small>
           </div>
         </div>
       </div>

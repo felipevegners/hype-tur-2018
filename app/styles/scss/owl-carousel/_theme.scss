@@ -20,6 +20,7 @@
 				background: $nav-background-hover;
 				color:$nav-color-hover;
 				text-decoration: none;
+				padding: 0 4px !important;
 			}
 		}
 		.disabled {
@@ -57,6 +58,7 @@
 			&:hover {
 				span {
 					background: $dot-background-active;
+					border: 1px solid $second-color;
 				}
 			}
 		}

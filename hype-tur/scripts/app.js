@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $('.owl-carousel').owlCarousel({
+    $('.promo-package').owlCarousel({
         loop:true,
         margin:0,
         nav:true,
