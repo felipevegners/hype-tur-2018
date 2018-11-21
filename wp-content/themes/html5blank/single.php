@@ -18,7 +18,7 @@
 			<!-- /post thumbnail -->
 
 			<!-- post title -->
-			<h1>
+			<h1>SINGLE
 				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
 			</h1>
 			<!-- /post title -->

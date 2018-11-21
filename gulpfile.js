@@ -21,7 +21,7 @@ plumber     = require('gulp-plumber');
 
 gulp.task('browserSync', function() {
 
-  var files = ['hype-tur/*.php', 'hype-tur/*.css'];
+  var files = ['wp-content/themes/hypetur/*.php', 'wp-content/themes/hypetur/*.css'];
     browserSync.init(files, {
         // server: {
         //     baseDir: "app/"
@@ -50,7 +50,7 @@ gulp.task('images-deploy', function() {
     gulp.src(['app/images/**/*', '!app/images/README'])
         //prevent pipe breaking caused by errors from gulp plugins
         .pipe(plumber())
-        .pipe(gulp.dest('hype-tur/images'));
+        .pipe(gulp.dest('wp-content/themes/hypetur/images'));
 
 });
 
@@ -65,7 +65,7 @@ gulp.task('scripts', function() {
                 //catch errors
                 .on('error', gutil.log)
                 //where we will store our finalized, compressed script
-                .pipe(gulp.dest('hype-tur/scripts'))
+                .pipe(gulp.dest('wp-content/themes/hypetur/scripts'))
                 //notify browserSync to refresh
                 .pipe(browserSync.reload({stream: true}));
 });
@@ -81,7 +81,7 @@ gulp.task('scripts-deploy', function() {
                 //compress :D
                 .pipe(uglify())
                 //where we will store our finalized, compressed script
-                .pipe(gulp.dest('hype-tur/scripts'));
+                .pipe(gulp.dest('wp-content/themes/hypetur/scripts'));
 });
 
 //compiling our SCSS files
@@ -115,7 +115,7 @@ gulp.task('styles', function() {
                 //get our sources via sourceMaps
                 .pipe(sourceMaps.write())
                 //where to save our final, compressed css file
-                .pipe(gulp.dest('hype-tur'))
+                .pipe(gulp.dest('wp-content/themes/hypetur'))
                 //notify browserSync to refresh
                 .pipe(browserSync.reload({stream: true}));
 });
@@ -139,13 +139,13 @@ gulp.task('styles-deploy', function() {
                 .pipe(concat('style.css'))
                 .pipe(minifyCSS())
                 //where to save our final, compressed css file
-                .pipe(gulp.dest('hype-tur'));
+                .pipe(gulp.dest('wp-content/themes/hypetur'));
 });
 
 //basically just keeping an eye on all HTML files
 gulp.task('html', function() {
     //watch any and all HTML files and refresh when something changes
-    return gulp.src('hype-tur/*.php')
+    return gulp.src('wp-content/themes/hypetur/*.php')
         .pipe(plumber())
         .pipe(browserSync.reload({stream: true}))
         //catch errors
@@ -188,11 +188,11 @@ gulp.task('clean', function() {
 //create folders using shell
 gulp.task('scaffold', function() {
   return shell.task([
-      'mkdir hype-tur',
-      'mkdir hype-tur/fonts',
-      'mkdir hype-tur/images',
-      'mkdir hype-tur/scripts',
-      'mkdir hype-tur/styles'
+      'mkdir wp-content/themes/hypetur',
+      'mkdir wp-content/themes/hypetur/fonts',
+      'mkdir wp-content/themes/hypetur/images',
+      'mkdir wp-content/themes/hypetur/scripts',
+      'mkdir wp-content/themes/hypetur/styles'
     ]
   );
 });

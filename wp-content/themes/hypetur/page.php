@@ -346,7 +346,7 @@
         <div class="row">
           <div class="col-md-12">
           <button type="button" class="show-full-post">
-            <a href="single.php">Ver todos os posts</a>
+            <a href="/blog">Ver todos os posts</a>
           </button>
           </div>
         </div>

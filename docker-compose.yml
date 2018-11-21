@@ -13,8 +13,9 @@ services:
     image: wordpress:php5.6
     container_name: hypetur_wordpress
     volumes:
-      - ./plugins/:/var/www/html/wp-content/plugins # Plugin development
-      - ./hype-tur/:/var/www/html/wp-content/themes/hype-tur # Theme development
+      - ./:/var/www/html
+      #- ./plugins/:/var/www/html/wp-content/plugins # Plugin development
+      #- ./hype-tur/:/var/www/html/wp-content/themes/hype-tur # Theme development
     ports:
       - '127.0.0.1:8080:80'
     links:
