@@ -1,6 +1,6 @@
 <?php   get_header(); ?>
 
-<!-- <div class="owl-carousel owl-theme promo-package"> -->
+<div class="owl-carousel owl-theme promo-package">
 <?php
   $args = array(
   'post_type'	  => 'promo-package',
@@ -10,19 +10,19 @@
   'order' => 'ASC'
   );
   $query = new WP_Query($args);
-  $schedules = $query->posts;
-  foreach ($schedules as $schedule) {
-  $schedule_meta = get_post_meta($schedule->ID, '', true);
+  $packages = $query->posts;
+  foreach ($packages as $package) {
+  $package_meta = get_post_meta($package->ID, '', true);
 ?>
 <div class="promo-package-wrapper">
-  <section class="destination-section" style="background:url(<?php echo $schedule_meta['picture_url'][0] ?>) top center/cover no-repeat;">
+  <section class="destination-section" style="background:url(<?php echo $package_meta['picture_url'][0] ?>) top center/cover no-repeat;">
     <div class="container">
       <div class="row">
         <div class="destination-detail">
-          <h1><?php echo $schedule_meta['place'][0] ?></h1>
-          <small><?php echo $schedule_meta['country'][0] ?></small>
-          <p><?php echo $schedule_meta['description'][0] ?></p>
-          <p><?php echo $schedule_meta['testmonial'][0] ?></p>
+          <h1><?php echo $package_meta['place'][0] ?></h1>
+          <small><?php echo $package_meta['country'][0] ?></small>
+          <p><?php echo $package_meta['intro'][0] ?></p>
+          <p><?php echo $package_meta['testmonial'][0] ?></p>
           <button class="more-info-btn">Quero saber mais!</button>
         </div>
       </div>
@@ -32,18 +32,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <h1>Maravilhas da Índia em 7 noites</h1>
-          <p>Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art party, cardigan raw denim quinoa. Cray
-            paleo tattooed, Truffaut skateboard street art PBR jean shorts Shoreditch farm-to-table Austin lo-fi Odd Future occupy.
-            Chia semiotics skateboard, Schlitz messenger bag master cleanse High Life occupy vegan polaroid tote bag leggings.
-            Single-origin coffee mumblecore deep v salvia mlkshk. Organic photo booth cray tofu, vegan fixie bitters sriracha.
-            Blog Austin Wes Anderson, deep v pour-over trust fund vinyl mlkshk +1.</p>
+          <h1><?php echo $package_meta['package_title'][0] ?></h1>
+          <p><?php echo $package_meta['package_description'][0] ?></p>
         </div>
       </div>
       <div class="row destination-price">
         <div class="col-md-5 offset-md-1">
           <div class="row">
             <div class="col-md-4 package-icon">
+              <?php echo $package_meta['package_includes'][0] ?>
               <span class="icon-wrapper">
                 <img class="icon" src="<?php echo get_template_directory_uri();?>/images/icons/air-ticket.svg">
               </span>
@@ -89,18 +86,18 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <nav>
+          <!-- <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><?php echo $schedule_meta['place'][0] ?></a>
               <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
               <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">HOME</div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">PROFILE</div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">CONTACT</div>
-          </div>
+            <div class="tab-pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><img src="<?php echo $schedule_meta['picture_url'][0] ?>" alt=""></div>
+            <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><img src="<?php echo $schedule_meta['picture_url'][1] ?>" alt=""></div>
+            <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><img src="<?php echo $schedule_meta['picture_url'][2] ?>" alt=""></div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -109,8 +106,7 @@
 <?php
   }
 ?>
-<!-- </div> -->
-
+</div>
 <!-- SERVICES -->
 <section class="services">
   <div class="container">

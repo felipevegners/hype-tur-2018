@@ -8,6 +8,7 @@ $(document).ready(function(){
         autoplayTimeout:5000,
         autoplayHoverPause:false,
         animateOut: 'fadeOut',
+        mouseDrag: false,
         responsive:{
             0:{
                 items:1
@@ -25,7 +26,6 @@ $(document).ready(function(){
         loop:true,
         margin:0,
         nav:true,
-        dots: true,
         autoplay:true,
         autoplayTimeout:5000,
         autoplayHoverPause:false,
@@ -43,6 +43,8 @@ $(document).ready(function(){
     });
 
     $('.more-info-btn').click(function() {
+        var owl = $('.promo-package');
+        owl.trigger('stop.owl.autoplay');
         $('.destination-about').slideDown(450);
         $('html, body').animate({
             scrollTop: $(".destination-about").offset().top + 60

@@ -5,7 +5,7 @@
     wp_enqueue_script('script-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', array (), 1.0, true);
     wp_enqueue_script('script-bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js', array ('script-jquery'), 1.0, true);
     wp_enqueue_script('my-custom-script', get_template_directory_uri() .'/scripts/app.js', array('jquery'), 1.0, true);
-    wp_enqueue_script('script-owl-carousel', get_template_directory_uri() .'/scripts/owl.carousel.min.js', array('jquery'), 1.0, true);
+    // wp_enqueue_script('script-owl-carousel', get_template_directory_uri() .'/scripts/owl.carousel.min.js', array('jquery'), 1.0, true);
   }
   add_action('wp_enqueue_scripts', 'theme_resources');
   
@@ -53,23 +53,44 @@ function create_metabox_package($meta_boxes_package) {
       'fields'     => array(
           array(
               'id'   => 'place',
-              'name' => __('Destino', 'hype-tur'),
+              'name' => __('Destino:', 'hype-tur'),
               'type' => 'text',
           ),
           array(
               'id'   => 'country',
-              'name' => __('País do destino', 'hype-tur'),
+              'name' => __('País do destino:', 'hype-tur'),
               'type' => 'text',
           ),
           array(
-              'id'   => 'description',
-              'name' => __('Breve descrição do destino', 'hype-tur'),
+              'id'   => 'intro',
+              'name' => __('Breve introdução do destino:', 'hype-tur'),
               'type' => 'textarea',
           ),
           array(
             'id' => 'picture_url',
-            'name' => __('URL da Imagem do destino', 'hype-tur'),
+            'name' => __('URL da Imagem do destino:', 'hype-tur'),
             'type' => 'text'
+          ),
+          array(
+            'id' => 'package_title',
+            'name' => __('Título do Pacote Promocional:', 'hype-tur'),
+            'type' => 'text'
+          ),
+          array(
+            'id' => 'package_description',
+            'name' => __('Descrição do Pacote Promocional:', 'hype-tur'),
+            'type' => 'textarea'
+          ),
+          array(
+            'id' => 'package_includes',
+            'name' => __('O pacote inclui:', 'hype-tur'),
+            'type' => 'checkbox_list',
+            'options' => array(
+                'Aéreo' => 'Inclui aéreo',
+                'hotel' => 'Inclui hotel',
+                'terrestre' => 'Inclui terrestre',
+            ),
+            'inline' => true,
           ),
       )
   );
