@@ -3,7 +3,7 @@ $(document).ready(function(){
     $('.promo-package').owlCarousel({
         loop:true,
         margin:0,
-        nav:true,
+        nav:false,
         autoplay:true,
         autoplayTimeout:5000,
         autoplayHoverPause:false,
@@ -40,6 +40,13 @@ $(document).ready(function(){
                 items:1
             }
         }
+    });
+
+    $('.more-info-btn').click(function() {
+        $('.destination-about').slideDown(450);
+        $('html, body').animate({
+            scrollTop: $(".destination-about").offset().top + 60
+        }, 450);
     });
 
   });
