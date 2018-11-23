@@ -1,6 +1,6 @@
 /* Component Needs */
 
-.pc-tab > input,
+.pc-tab > input { display: block; }
 .pc-tab section > div {
   display: none;
 }
@@ -30,9 +30,7 @@ $unactiveHoverColor: #dddddd;
 }
 
 .pc-tab {
-  border: 1px solid red; 
   width: 100%;
-  height: 600px;
   margin: 0 auto;
   ul {
     list-style: none;
@@ -55,7 +53,7 @@ $unactiveHoverColor: #dddddd;
         }
       }
       &:not(:last-child) label {
-         border-right-width: 0; 
+        border-right-width: 0; 
       }
     }
   }
@@ -96,15 +94,4 @@ $unactiveHoverColor: #dddddd;
       bottom: -1px;
     }
   }
-}
-
-.tab-content > .tab-pane {
-  visibility: hidden !important;
-  height: 0px !important;
-  overflow:hidden !important;
-}
-.tab-content > .active {
-  visibility: visible !important;
-  height: auto !important;
-  overflow: visible !important;
 }

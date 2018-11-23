@@ -1,112 +1,175 @@
 <?php   get_header(); ?>
 
-<div class="owl-carousel owl-theme promo-package">
-<?php
-  $args = array(
-  'post_type'	  => 'promo-package',
-  'post_status' => 'publish',
-  'nopaging' => true,
-  'orderby' => 'meta_value_num',
-  'order' => 'ASC'
-  );
-  $query = new WP_Query($args);
-  $packages = $query->posts;
-  foreach ($packages as $package) {
-  $package_meta = get_post_meta($package->ID, '', true);
-?>
-<div class="promo-package-wrapper">
-  <section class="destination-section" style="background:url(<?php echo $package_meta['picture_url'][0] ?>) top center/cover no-repeat;">
-    <div class="container">
-      <div class="row">
-        <div class="destination-detail">
-          <h1><?php echo $package_meta['place'][0] ?></h1>
-          <small><?php echo $package_meta['country'][0] ?></small>
-          <p><?php echo $package_meta['intro'][0] ?></p>
-          <p><?php echo $package_meta['testmonial'][0] ?></p>
-          <button class="more-info-btn">Quero saber mais!</button>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="destination-about">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 offset-md-1">
-          <h1><?php echo $package_meta['package_title'][0] ?></h1>
-          <p><?php echo $package_meta['package_description'][0] ?></p>
-        </div>
-      </div>
-      <div class="row destination-price">
-        <div class="col-md-5 offset-md-1">
-          <div class="row">
-            <div class="col-md-4 package-icon">
-              <?php echo $package_meta['package_includes'][0] ?>
-              <span class="icon-wrapper">
-                <img class="icon" src="<?php echo get_template_directory_uri();?>/images/icons/air-ticket.svg">
-              </span>
-              <p class="icon-label">AÉREO</p>
-            </div>
-            <div class="col-md-4 package-icon">
-              <span class="icon-wrapper">
-                <img class="icon" src="<?php echo get_template_directory_uri();?>/images/icons/hotel-bed.svg">
-              </span>
-              <p class="icon-label">HOTEL</p>
-            </div>
-            <div class="col-md-4 package-icon">
-              <span class="icon-wrapper">
-                <img class="icon -car" src="<?php echo get_template_directory_uri();?>/images/icons/car-rent.svg">
-              </span>
-              <p class="icon-label">TERRESTRE</p>
-            </div>
-          </div>
-          <div class="row">
-            <p class="col-md-12">
-              Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art party, cardigan raw denim quinoa. Apparel
-              kale chips tofu art party, cardigan raw denim quinoa.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-5 inset-md-1 package-price">
-          <div class="row">
-            <div class="col-md-12">
-              <h1>Valor do Pacote</h1>
-              <p>O valor do pacote inclui todas as tarifas e taxas, inclusive as hospedagens.</p>
-              <h1>R$ 4.659,90*</h1>
-              <small>
-                *por passageiro (incluso taxas) em até 10x sem juros no cartão de crédito. Valor sujeito à variação cambial.
-              </small>
-            </div>
+<!-- <div class="owl-carousel owl-theme promo-package"> -->
+<div class="promo-package">
+  <?php
+    $args = array(
+    'post_type'	  => 'promo-package',
+    'post_status' => 'publish',
+    'nopaging' => true,
+    'orderby' => 'meta_value_num',
+    'order' => 'ASC'
+    );
+    $query = new WP_Query($args);
+    $packages = $query->posts;
+    foreach ($packages as $package) {
+    $package_meta = get_post_meta($package->ID, '', true);
+  ?>
+  <div class="promo-package-wrapper">
+    <section class="destination-section" style="background:url(<?php echo $package_meta['picture_url'][0] ?>) top center/cover no-repeat;">
+      <div class="container">
+        <div class="row">
+          <div class="destination-detail">
+            <h1><?php echo $package_meta['place'][0] ?></h1>
+            <small><?php echo $package_meta['country'][0] ?></small>
+            <p><?php echo $package_meta['intro'][0] ?></p>
+            <p><?php echo $package_meta['testmonial'][0] ?></p>
+            <button class="more-info-btn">Quero saber mais!</button>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <button class="buy-package">Quero fechar este pacote</button>
+    </section>
+    <section class="destination-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <h1><?php echo $package_meta['package_title'][0] ?></h1>
+            <p><?php echo $package_meta['package_description'][0] ?></p>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <!-- <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><?php echo $schedule_meta['place'][0] ?></a>
-              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+        <div class="row destination-price">
+          <div class="col-md-5 offset-md-1">
+            <div class="row">
+              <div class="col-md-4 package-icon">
+                <?php echo $package_meta['package_includes'][0] ?>
+                <span class="icon-wrapper">
+                  <img class="icon" src="<?php echo get_template_directory_uri();?>/images/icons/air-ticket.svg">
+                </span>
+                <p class="icon-label">AÉREO</p>
+              </div>
+              <div class="col-md-4 package-icon">
+                <span class="icon-wrapper">
+                  <img class="icon" src="<?php echo get_template_directory_uri();?>/images/icons/hotel-bed.svg">
+                </span>
+                <p class="icon-label">HOTEL</p>
+              </div>
+              <div class="col-md-4 package-icon">
+                <span class="icon-wrapper">
+                  <img class="icon -car" src="<?php echo get_template_directory_uri();?>/images/icons/car-rent.svg">
+                </span>
+                <p class="icon-label">TERRESTRE</p>
+              </div>
             </div>
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><img src="<?php echo $schedule_meta['picture_url'][0] ?>" alt=""></div>
-            <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><img src="<?php echo $schedule_meta['picture_url'][1] ?>" alt=""></div>
-            <div class="tab-pane" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><img src="<?php echo $schedule_meta['picture_url'][2] ?>" alt=""></div>
-          </div> -->
+            <div class="row">
+              <p class="col-md-12">
+                Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art party, cardigan raw denim quinoa. Apparel
+                kale chips tofu art party, cardigan raw denim quinoa.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-5 inset-md-1 package-price">
+            <div class="row">
+              <div class="col-md-12">
+                <h1>Valor do Pacote</h1>
+                <p>O valor do pacote inclui todas as tarifas e taxas, inclusive as hospedagens.</p>
+                <h1>R$ 4.659,90*</h1>
+                <small>
+                  *por passageiro (incluso taxas) em até 10x sem juros no cartão de crédito. Valor sujeito à variação cambial.
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button class="buy-package">Quero fechar este pacote</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <!-- BOOTSTRAP TABS -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">HOME</div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">PROFILE</div>
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">CONTACT</div>
+            </div>
+            <!-- JS BUTTON TABS -->
+            <div class="w3-bar w3-black">
+              <button class="w3-bar-item w3-button" onclick="openCity('London')">London</button>
+              <button class="w3-bar-item w3-button" onclick="openCity('Paris')">Paris</button>
+              <button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Tokyo</button>
+            </div>
+
+            <div id="London" class="w3-container city" style="border:1px solid red">
+              <h2>London</h2>
+              <p>London is the capital city of England.</p>
+            </div>
+
+            <div id="Paris" class="w3-container city" style="display:none; border:1px solid red">
+              <h2>Paris</h2>
+              <p>Paris is the capital of France.</p> 
+            </div>
+
+            <div id="Tokyo" class="w3-container city" style="display:none; border:1px solid red">
+              <h2>Tokyo</h2>
+              <p>Tokyo is the capital of Japan.</p>
+            </div>
+            <!-- PURE CSS TABS -->
+            <div class="pc-tab">
+              <input id="tab1" type="radio" name="pct" checked />
+              <input id="tab2" type="radio" name="pct" />
+              <input id="tab3" type="radio" name="pct" />
+              <nav>
+                <ul>
+                  <li class="tab1">
+                    <label for="tab1">First Tab</label>
+                  </li>
+                  <li class="tab2">
+                    <label for="tab2">Second Tab</label>
+                  </li>
+                  <li class="tab3">
+                    <label for="tab3">Third Tab</label>
+                  </li>
+                </ul>
+              </nav>
+              <section>
+                <div class="tab1">
+                  <h2>First</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus itaque quidem minus nostrum, voluptatem accusamus aspernatur quia harum ratione, officia laudantium inventore autem doloribus atque labore numquam non. Hic, animi.</p>
+                </div>
+                <div class="tab2">
+                  <h2>Second</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nesciunt ipsum dolore error repellendus officiis aliquid a, vitae reprehenderit, accusantium vero, ad. Obcaecati numquam sapiente cupiditate. Praesentium eaque, quae error!</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maiores.</p>
+                </div>
+                <div class="tab3">
+                  <h2>Third</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, nobis culpa rem, vitae earum aliquid.</p>
+                </div>
+              </section>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </div>
+<!-- END CAROUSEL -->
 <?php
   }
 ?>
 </div>
+
 <!-- SERVICES -->
 <section class="services">
   <div class="container">
