@@ -62,9 +62,14 @@ function create_metabox_package($meta_boxes_package) {
               'type' => 'text',
           ),
           array(
+              'id'   => 'period',
+              'name' => __('Período do Pacote:', 'hype-tur'),
+              'type' => 'text',
+          ),
+          array(
               'id'   => 'intro',
               'name' => __('Breve introdução do destino:', 'hype-tur'),
-              'type' => 'textarea',
+              'type' => 'wysiwyg',
           ),
           array(
             'id' => 'picture_url',
@@ -79,19 +84,21 @@ function create_metabox_package($meta_boxes_package) {
           array(
             'id' => 'package_description',
             'name' => __('Descrição do Pacote Promocional:', 'hype-tur'),
-            'type' => 'textarea'
+            'type' => 'wysiwyg'
           ),
           array(
             'id' => 'package_includes',
             'name' => __('O pacote inclui:', 'hype-tur'),
             'type' => 'checkbox_list',
             'options' => array(
-                'Aéreo' => 'Inclui aéreo',
-                'hotel' => 'Inclui hotel',
-                'terrestre' => 'Inclui terrestre',
+                'aéreo' => 'Aéreo',
+                'hotel' => 'Hotel',
+                'terrestre' => 'Terrestre',
+                'marítimo' => 'Marítimo',
             ),
             'inline' => true,
           ),
+          
       )
   );
 

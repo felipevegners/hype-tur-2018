@@ -22,9 +22,10 @@
           <div class="destination-detail">
             <h1><?php echo $package_meta['place'][0] ?></h1>
             <small><?php echo $package_meta['country'][0] ?></small>
-            <p><?php echo $package_meta['intro'][0] ?></p>
+            <p class="dest-period"><?php echo $package_meta['period'][0] ?></p>
+            <p class="mb-0"><?php echo $package_meta['intro'][0] ?></p>
             <p><?php echo $package_meta['testmonial'][0] ?></p>
-            <button class="more-info-btn">Quero saber mais!</button>
+            <button class="more-info-btn my-4">Quero saber mais!</button>
           </div>
         </div>
       </div>
@@ -32,33 +33,43 @@
     <section class="destination-about">
       <div class="container">
         <div class="row">
-          <div class="col-md-10 offset-md-1">
+          <div class="col-md-12">
             <h1><?php echo $package_meta['package_title'][0] ?></h1>
             <p><?php echo $package_meta['package_description'][0] ?></p>
           </div>
         </div>
         <div class="row destination-price">
-          <div class="col-md-5 offset-md-1">
-            <div class="row">
-              <div class="col-md-4 package-icon">
-                <?php echo $package_meta['package_includes'][0] ?>
-                <span class="icon-wrapper">
-                  <img class="icon" src="<?php echo get_template_directory_uri();?>/images/icons/air-ticket.svg">
+          <div class="col-md-6">
+            <div class="row justify-content-center">
+                <?php 
+                  $includes = $package_meta['package_includes'];
+                  foreach ( $includes as $include ) {
+                ?>
+                <div class="col-md-3 package-icon">
+                  <span class="icon-wrapper" data-icon="<?php echo $value; ?>">
+                    <img class="icon -<?php echo $include; ?>" src="<?php echo get_template_directory_uri();?>/images/icons/<?php echo $include; ?>.svg"> -->
+                  </span>
+                  <p class="icon-label"><?php echo $include; ?></p>
+                </div>
+                <?php
+                  }
+                ?>
+                <!-- <span class="icon-wrapper">
+                  <img class="icon" src="<?php //echo get_template_directory_uri();?>/images/icons/air-ticket.svg">
                 </span>
-                <p class="icon-label">AÉREO</p>
-              </div>
-              <div class="col-md-4 package-icon">
+                <p class="icon-label">AÉREO</p> -->
+              <!-- <div class="col-md-4 package-icon">
                 <span class="icon-wrapper">
-                  <img class="icon" src="<?php echo get_template_directory_uri();?>/images/icons/hotel-bed.svg">
+                  <img class="icon" src="<?php //echo get_template_directory_uri();?>/images/icons/hotel-bed.svg">
                 </span>
                 <p class="icon-label">HOTEL</p>
-              </div>
-              <div class="col-md-4 package-icon">
+              </div> -->
+              <!-- <div class="col-md-4 package-icon">
                 <span class="icon-wrapper">
-                  <img class="icon -car" src="<?php echo get_template_directory_uri();?>/images/icons/car-rent.svg">
+                  <img class="icon -car" src="<?php //echo get_template_directory_uri();?>/images/icons/car-rent.svg">
                 </span>
                 <p class="icon-label">TERRESTRE</p>
-              </div>
+              </div> -->
             </div>
             <div class="row">
               <p class="col-md-12">
@@ -87,78 +98,40 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <!-- BOOTSTRAP TABS -->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">HOME</div>
-              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">PROFILE</div>
-              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">CONTACT</div>
-            </div>
-            <!-- JS BUTTON TABS -->
-            <div class="w3-bar w3-black">
-              <button class="w3-bar-item w3-button" onclick="openCity('London')">London</button>
-              <button class="w3-bar-item w3-button" onclick="openCity('Paris')">Paris</button>
-              <button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Tokyo</button>
-            </div>
-
-            <div id="London" class="w3-container city" style="border:1px solid red">
-              <h2>London</h2>
-              <p>London is the capital city of England.</p>
-            </div>
-
-            <div id="Paris" class="w3-container city" style="display:none; border:1px solid red">
-              <h2>Paris</h2>
-              <p>Paris is the capital of France.</p> 
-            </div>
-
-            <div id="Tokyo" class="w3-container city" style="display:none; border:1px solid red">
-              <h2>Tokyo</h2>
-              <p>Tokyo is the capital of Japan.</p>
-            </div>
-            <!-- PURE CSS TABS -->
+            <? for ($i = 1; $i < 3; $i++): ?>
+            <? endfor ?>
             <div class="pc-tab">
-              <input id="tab1" type="radio" name="pct" checked />
-              <input id="tab2" type="radio" name="pct" />
-              <input id="tab3" type="radio" name="pct" />
-              <nav>
-                <ul>
-                  <li class="tab1">
-                    <label for="tab1">First Tab</label>
-                  </li>
-                  <li class="tab2">
-                    <label for="tab2">Second Tab</label>
-                  </li>
-                  <li class="tab3">
-                    <label for="tab3">Third Tab</label>
-                  </li>
-                </ul>
-              </nav>
-              <section>
-                <div class="tab1">
-                  <h2>First</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus itaque quidem minus nostrum, voluptatem accusamus aspernatur quia harum ratione, officia laudantium inventore autem doloribus atque labore numquam non. Hic, animi.</p>
-                </div>
-                <div class="tab2">
-                  <h2>Second</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nesciunt ipsum dolore error repellendus officiis aliquid a, vitae reprehenderit, accusantium vero, ad. Obcaecati numquam sapiente cupiditate. Praesentium eaque, quae error!</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maiores.</p>
-                </div>
-                <div class="tab3">
-                  <h2>Third</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, nobis culpa rem, vitae earum aliquid.</p>
-                </div>
-              </section>
-          </div>
+      <input id="tab1" type="radio" name="pct" checked />
+      <input id="tab2" type="radio" name="pct" />
+      <input id="tab3" type="radio" name="pct" />
+      <nav>
+        <ul>
+          <li class="tab1">
+            <label for="tab1">First Tab</label>
+          </li>
+          <li class="tab2">
+            <label for="tab2">Second Tab</label>
+          </li>
+          <li class="tab3">
+            <label for="tab3">Third Tab</label>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <div class="tab1">
+          <h2>First</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus itaque quidem minus nostrum, voluptatem accusamus aspernatur quia harum ratione, officia laudantium inventore autem doloribus atque labore numquam non. Hic, animi.</p>
+        </div>
+        <div class="tab2">
+          <h2>Second</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nesciunt ipsum dolore error repellendus officiis aliquid a, vitae reprehenderit, accusantium vero, ad. Obcaecati numquam sapiente cupiditate. Praesentium eaque, quae error!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maiores.</p>
+        </div>
+        <div class="tab3">
+          <h2>Third</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, nobis culpa rem, vitae earum aliquid.</p>
+        </div>
+      </section>
         </div>
       </div>
     </div>

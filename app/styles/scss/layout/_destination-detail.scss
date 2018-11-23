@@ -52,14 +52,22 @@
         display: block;
     }
 
+    .dest-period {
+        font-size: 1.5rem;
+        font-style: italic;
+        font-weight: 700;
+        color: #fec578;
+    }
+
     & > p {
         @include paragraph; 
         color: $white;
-        margin-bottom: 3rem;
+        line-height: 1.8;
     }
 
     & > button {
         @include button-std;
+        margin: 2rem 0;
         background: $second-color;
         color: $main-color;
         &:hover {
