@@ -38,7 +38,7 @@
         'capability_type'    => 'post',
         'has_archive'        => false,
         'hierarchical'       => false,
-        'menu_position'      => 4,
+        'menu_position'      => 2,
         'supports'           => $supports,
     );
     register_post_type('promo-package', $args);
@@ -105,6 +105,88 @@ function create_metabox_package($meta_boxes_package) {
     return $meta_boxes_package;
   }
   add_filter('rwmb_meta_boxes', 'create_metabox_package');
+
+
+  // Metabox for Testimonials Admin Custom Menu
+  function create_post_type_testimonial() {
+    $labels = array(
+        'name'                => __('Depoimentos | Home Page', 'hype-tur'),
+        'singular_name'       => __('Depoimento', 'hype-tur'),
+        'add_new'             => __('Adicionar depoimento', 'hype-tur'),
+        'add_new_item'        => __('Adicionar depoimento', 'hype-tur'),
+        'edit_item'           => __('Editar Depoimento', 'hype-tur'),
+        'new_item'            => __('Novo Depoimento', 'hype-tur'),
+        'all_items'           => __('Todos os depoimentos', 'hype-tur'),
+        'view_item'           => __('Visualizar depoimento', 'hype-tur'),
+        'search_items'        => __('Buscar depoimento', 'hype-tur'),
+        'not_found'           => __('Nenhum depoimento encontrado', 'hype-tur'),
+        'not_found_in_trash'  => __('Nenhum depoimento no lixo', 'hype-tur'),
+        'menu_name'           => __('Depoimentos de Clientes', 'hype-tur'),
+    );
+
+    $supports = array('title', 'thumbnail');
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'hype-tur'),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 3,
+        'supports'           => $supports,
+    );
+    register_post_type('testimonial', $args);
+}
+add_action('init', 'create_post_type_testimonial');
+
+// CREATES METABOX LOOP
+function create_metabox_testimonial($meta_boxes_testimonial) {
+  $meta_boxes_testimonial[] = array(
+      'title'      => __('Depoimentos de Clientes', 'hype-tur'),
+      'post_types' => array('testimonial'),
+      'fields'     => array(
+          array(
+              'id'   => 'testimonial-name',
+              'name' => __('Nome do cliente:', 'hype-tur'),
+              'type' => 'text',
+          ),
+          array(
+              'id'   => 'testimonial-age',
+              'name' => __('Idade do cliente:', 'hype-tur'),
+              'type' => 'text',
+          ),
+          array(
+            'id'   => 'testimonial-occupation',
+            'name' => __('Cargo do cliente:', 'hype-tur'),
+            'type' => 'text',
+        ),
+          array(
+              'id'   => 'testimonial-text',
+              'name' => __('Depoimento do cliente:', 'hype-tur'),
+              'type' => 'wysiwyg',
+          ),
+          array(
+              'id'   => 'testimonial-picture',
+              'name' => __('Foto do cliente:', 'hype-tur'),
+              'type' => 'image_upload',
+              'force_delete'     => false,
+              'max_file_uploads' => 1,
+              'max_status'       => 'false',
+              'image_size'       => 'thumbnail',
+
+          ),
+          
+      )
+  );
+
+    return $meta_boxes_testimonial;
+  }
+  add_filter('rwmb_meta_boxes', 'create_metabox_testimonial');
+
 
   // Custom Excerpts
     function hypeturwp_index($length) // Create 20 Word Callback for Index page Excerpts, call using hypeturwp_excerpt('hypeturwp_index');

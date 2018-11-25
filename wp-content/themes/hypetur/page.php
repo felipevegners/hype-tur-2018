@@ -1,6 +1,5 @@
 <?php   get_header(); ?>
 
-<!-- <div class="owl-carousel owl-theme promo-package"> -->
 <div class="promo-package">
   <?php
     $args = array(
@@ -54,22 +53,6 @@
                 <?php
                   }
                 ?>
-                <!-- <span class="icon-wrapper">
-                  <img class="icon" src="<?php //echo get_template_directory_uri();?>/images/icons/air-ticket.svg">
-                </span>
-                <p class="icon-label">AÉREO</p> -->
-              <!-- <div class="col-md-4 package-icon">
-                <span class="icon-wrapper">
-                  <img class="icon" src="<?php //echo get_template_directory_uri();?>/images/icons/hotel-bed.svg">
-                </span>
-                <p class="icon-label">HOTEL</p>
-              </div> -->
-              <!-- <div class="col-md-4 package-icon">
-                <span class="icon-wrapper">
-                  <img class="icon -car" src="<?php //echo get_template_directory_uri();?>/images/icons/car-rent.svg">
-                </span>
-                <p class="icon-label">TERRESTRE</p>
-              </div> -->
             </div>
             <div class="row">
               <p class="col-md-12">
@@ -98,45 +81,24 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <? for ($i = 1; $i < 3; $i++): ?>
-            <? endfor ?>
-            <div class="pc-tab">
-      <input id="tab1" type="radio" name="pct" checked />
-      <input id="tab2" type="radio" name="pct" />
-      <input id="tab3" type="radio" name="pct" />
-      <nav>
-        <ul>
-          <li class="tab1">
-            <label for="tab1">First Tab</label>
-          </li>
-          <li class="tab2">
-            <label for="tab2">Second Tab</label>
-          </li>
-          <li class="tab3">
-            <label for="tab3">Third Tab</label>
-          </li>
-        </ul>
-      </nav>
-      <section>
-        <div class="tab1">
-          <h2>First</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus itaque quidem minus nostrum, voluptatem accusamus aspernatur quia harum ratione, officia laudantium inventore autem doloribus atque labore numquam non. Hic, animi.</p>
-        </div>
-        <div class="tab2">
-          <h2>Second</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nesciunt ipsum dolore error repellendus officiis aliquid a, vitae reprehenderit, accusantium vero, ad. Obcaecati numquam sapiente cupiditate. Praesentium eaque, quae error!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maiores.</p>
-        </div>
-        <div class="tab3">
-          <h2>Third</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, nobis culpa rem, vitae earum aliquid.</p>
-        </div>
-      </section>
-        </div>
+            <div class="package-more-info">
+              <ul class="nav nav-tabs" id="package-more-details" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home-<?php echo $package_meta['country'][0] ?>" role="tab" aria-controls="home" aria-selected="true">Inclusões</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile-<?php echo $package_meta['country'][0] ?>" role="tab" aria-controls="profile" aria-selected="false">Roteiro Dia a Dia</a>
+                </li>
+              </ul>
+            </div>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home-<?php echo $package_meta['country'][0] ?>" role="tabpanel" aria-labelledby="home-tab">O que está incluso no pacote <?php echo $package_meta['country'][0] ?></div>
+              <div class="tab-pane fade" id="profile-<?php echo $package_meta['country'][0] ?>" role="tabpanel" aria-labelledby="profile-tab">O roteiro dia a dia do pacote <?php echo $package_meta['country'][0] ?></div>
+            </div>
+          </div>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 <!-- END CAROUSEL -->
 <?php
   }
@@ -326,27 +288,39 @@
 <section class="testmonials">
   <div class="container">
     <div class="owl-carousel owl-theme single-testimonial">
+      <?php
+        $args = array(
+        'post_type'	  => 'testimonial',
+        'post_status' => 'publish',
+        'nopaging' => true,
+        'orderby' => 'meta_value_num',
+        'order' => 'ASC'
+        );
+        $query = new WP_Query($args);
+        $testimonials = $query->posts;
+        foreach ($testimonials as $testimonial) {
+        $testimonial_meta = get_post_meta($testimonial->ID, '', true);
+      ?>
       <div class="row">
         <div class="col-md-3 offset-md-1 text-right">
-          <img src="<?php echo get_template_directory_uri();?>/images/testmonial-avatar.png" alt="" style="display:inline-block !important; width:auto !important;">
+        <?php
+          $includes = $testimonial_meta['testimonial-picture'];
+          foreach ( $includes as $include ) {
+        ?>
+          <img src="<?php echo $include['url'][0]; ?>" alt="">
+        <?php
+          }
+        ?>
         </div>
         <div class="col-md-5 inset-md-1">
           <h4 class="quotes-icon"></h4>
-          <p>A Hype Tur cuidou de tudo quando resolvi conhecer a Europa e realmente a viagem foi perfeita! Agora estou planejando
-            um mochilão pela Ásia e com certeza viajarei com as meninas de novo. Obrigado!</p>
-          <h5>Cléo Pires, 35 anos - Atriz</h5>
+          <?php echo $testimonial_meta['testimonial-text'][0] ?>
+          <h5><?php echo $testimonial_meta['testimonial-name'][0] ?>, <?php echo $testimonial_meta['testimonial-age'][0] ?> anos - <?php echo $testimonial_meta['testimonial-occupation'][0] ?></h5>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-3 offset-md-1 text-right">
-          <img src="<?php echo get_template_directory_uri();?>/images/testmonial-avatar.png" alt="" style="display:inline-block !important; width:auto !important;">
-        </div>
-        <div class="col-md-5 inset-md-1">
-          <h4 class="quotes-icon"></h4>
-          <p>Lorem Ipsum sit dolor amet, dolor sit amet lorem ipsum ipsum</p>
-          <h5>Tania Pachedo, 35 anos - Empresária</h5>
-        </div>
-      </div>
+      <?php
+        }
+      ?>
     </div>
   </div>
 </section>

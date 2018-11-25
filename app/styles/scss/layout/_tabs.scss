@@ -1,7 +1,7 @@
 /* Component Needs */
 
-.pc-tab > input {display: block;}
-.pc-tab section > div {
+.package-more-info > input {display: block;}
+.package-more-info section > div {
   display: none;
 }
 
@@ -29,7 +29,7 @@ $unactiveHoverColor: #dddddd;
   box-sizing: border-box;
 }
 
-.pc-tab {
+.package-more-info {
   width: 100%;
   margin: 0 auto;
   ul {
