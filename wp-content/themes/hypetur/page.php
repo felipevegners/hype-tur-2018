@@ -55,28 +55,23 @@
                 ?>
             </div>
             <div class="row">
-              <p class="col-md-12">
-                Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art party, cardigan raw denim quinoa. Apparel
-                kale chips tofu art party, cardigan raw denim quinoa.
-              </p>
+              <div class="col-md-12">
+                <p><?php echo $package_meta['package_include_description'][0] ?></p>
+              </div>
             </div>
           </div>
           <div class="col-md-5 inset-md-1 package-price">
             <div class="row">
               <div class="col-md-12">
-                <h1>Valor do Pacote</h1>
-                <p>O valor do pacote inclui todas as tarifas e taxas, inclusive as hospedagens.</p>
-                <h1>R$ 4.659,90*</h1>
-                <small>
-                  *por passageiro (incluso taxas) em até 10x sem juros no cartão de crédito. Valor sujeito à variação cambial.
-                </small>
+                <h2>Valor do Pacote</h2>
+                <p class="mb-0">Entrada de:</p>
+                <h2>R$ <?php echo $package_meta['package_initial_ammount'][0] ?></h2>
+                <p class="mb-0">Saldo em:</p>
+                <h2><?php echo $package_meta['package_payment_parcels'][0] ?>x de: R$ <?php echo $package_meta['package_parcel_ammount'][0] ?></h2>
+                <small><?php echo $package_meta['package_price_disclaimer'][0] ?></small>
+                <button class="buy-package">Quero reservar este pacote</button>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <button class="buy-package">Quero fechar este pacote</button>
           </div>
         </div>
         <div class="row">
@@ -84,16 +79,20 @@
             <div class="package-more-info">
               <ul class="nav nav-tabs" id="package-more-details" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home-<?php echo $package_meta['country'][0] ?>" role="tab" aria-controls="home" aria-selected="true">Inclusões</a>
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#includes-<?php echo $package_meta['country'][0] ?>" role="tab" aria-controls="home" aria-selected="true">Inclusões</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile-<?php echo $package_meta['country'][0] ?>" role="tab" aria-controls="profile" aria-selected="false">Roteiro Dia a Dia</a>
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#schedule-<?php echo $package_meta['country'][0] ?>" role="tab" aria-controls="profile" aria-selected="false">Roteiro Diário</a>
                 </li>
               </ul>
-            </div>
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="home-<?php echo $package_meta['country'][0] ?>" role="tabpanel" aria-labelledby="home-tab">O que está incluso no pacote <?php echo $package_meta['country'][0] ?></div>
-              <div class="tab-pane fade" id="profile-<?php echo $package_meta['country'][0] ?>" role="tabpanel" aria-labelledby="profile-tab">O roteiro dia a dia do pacote <?php echo $package_meta['country'][0] ?></div>
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="includes-<?php echo $package_meta['country'][0] ?>" role="tabpanel" aria-labelledby="home-tab">
+                  <?php echo $package_meta['package_tab_inclusions'][0] ?>
+                </div>
+                <div class="tab-pane fade" id="schedule-<?php echo $package_meta['country'][0] ?>" role="tabpanel" aria-labelledby="profile-tab">
+                  <?php echo $package_meta['package_tab_schedule'][0] ?>
+                </div>
+              </div>
             </div>
           </div>
       </div>
@@ -106,7 +105,7 @@
 </div>
 
 <!-- SERVICES -->
-<section class="services">
+<section id="services" class="services">
   <div class="container">
     <h1 class="section-title">Serviços</h1>
     <div class="col-md-12">
@@ -300,17 +299,13 @@
         $testimonials = $query->posts;
         foreach ($testimonials as $testimonial) {
         $testimonial_meta = get_post_meta($testimonial->ID, '', true);
+        $testimonial_image_meta = get_post_meta($testimonial_meta['testimonial-picture'][0], '', true);
+
       ?>
       <div class="row">
         <div class="col-md-3 offset-md-1 text-right">
-        <?php
-          $includes = $testimonial_meta['testimonial-picture'];
-          foreach ( $includes as $include ) {
-        ?>
-          <img src="<?php echo $include['url'][0]; ?>" alt="">
-        <?php
-          }
-        ?>
+          <img class="testimonial-picture" src="<?php echo wp_upload_dir()['baseurl'].'/'.$testimonial_image_meta['_wp_attached_file'][0]; ?>" alt="">
+          
         </div>
         <div class="col-md-5 inset-md-1">
           <h4 class="quotes-icon"></h4>
@@ -379,7 +374,7 @@
   </div>
 </section>
 <!-- CONTACT-US -->
-<section class="contact-section">
+<section id="contact" class="contact-section">
   <div class="container">
       <h1 class="section-title">Fale conosco</h1>
     <div class="row">

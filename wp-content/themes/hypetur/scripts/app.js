@@ -1,8 +1,9 @@
 $(document).ready(function(){
 
     $('.promo-package').slick({
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 2000,
+        arrows: false,
         dots: true,
         infinite: true,
         speed: 500,

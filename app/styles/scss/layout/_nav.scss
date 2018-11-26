@@ -9,7 +9,6 @@
 }
 
 .navbar {
-    height: 60px;
     padding: 1.5rem 0;
     //background: #fff;
 
@@ -17,7 +16,9 @@
         @include menu-item;
         color: $main-color;
         margin: 0 1rem;
-        padding: 0 !important;
+        @media screen and (max-width:768px) {
+            margin: 0;
+        }
         line-height: 2;
         transition: all .15s ease-in;
         &:hover {

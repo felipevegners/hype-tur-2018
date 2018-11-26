@@ -1,4 +1,10 @@
 <?php
+    // Get the navwalker bootstrap menu integration
+    require get_template_directory() . '/bootstrap-navwalker.php';
+
+    register_nav_menus( array(
+        'menu-1' => esc_html__( 'Primary', 'theme-textdomain' ),
+    ) );
 
   function theme_resources() {
     wp_enqueue_style('style', get_stylesheet_uri());
@@ -79,7 +85,7 @@ function create_metabox_package($meta_boxes_package) {
           array(
             'id' => 'package_title',
             'name' => __('Título do Pacote Promocional:', 'hype-tur'),
-            'type' => 'text'
+            'type' => 'textarea'
           ),
           array(
             'id' => 'package_description',
@@ -87,18 +93,52 @@ function create_metabox_package($meta_boxes_package) {
             'type' => 'wysiwyg'
           ),
           array(
-            'id' => 'package_includes',
-            'name' => __('O pacote inclui:', 'hype-tur'),
-            'type' => 'checkbox_list',
-            'options' => array(
-                'aéreo' => 'Aéreo',
-                'hotel' => 'Hotel',
-                'terrestre' => 'Terrestre',
-                'marítimo' => 'Marítimo',
+              'id' => 'package_includes',
+              'name' => __('O pacote inclui:', 'hype-tur'),
+              'type' => 'checkbox_list',
+              'options' => array(
+                  'aéreo' => 'Aéreo',
+                  'hotel' => 'Hotel',
+                  'terrestre' => 'Terrestre',
+                  'marítimo' => 'Marítimo',
+                ),
+                'inline' => true,
+            ),    
+            array(
+              'id' => 'package_include_description',
+              'name' => __('Descrição do que está incluso:', 'hype-tur'),
+              'type' => 'wysiwyg'
             ),
-            'inline' => true,
-          ),
-          
+            array(
+              'id' => 'package_initial_ammount',
+              'name' => __('Valor de entrada do pacote:', 'hype-tur'),
+              'type' => 'text'
+            ),
+            array(
+              'id' => 'package_payment_parcels',
+              'name' => __('Quantidade de parcelas:', 'hype-tur'),
+              'type' => 'number'
+            ),
+            array(
+              'id' => 'package_parcel_ammount',
+              'name' => __('Valor das parcelas:', 'hype-tur'),
+              'type' => 'text'
+            ),
+            array(
+              'id' => 'package_price_disclaimer',
+              'name' => __('Observação sobre o preço:', 'hype-tur'),
+              'type' => 'wysiwyg'
+            ),
+            array(
+              'id' => 'package_tab_inclusions',
+              'name' => __('Aba inclusões:', 'hype-tur'),
+              'type' => 'wysiwyg'
+            ),
+            array(
+              'id' => 'package_tab_schedule',
+              'name' => __('Aba Roteiro Diário:', 'hype-tur'),
+              'type' => 'wysiwyg'
+            ),
       )
   );
 
