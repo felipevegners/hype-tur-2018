@@ -46,6 +46,7 @@
         'hierarchical'       => false,
         'menu_position'      => 2,
         'supports'           => $supports,
+        'menu_icon'          => 'dashicons-tickets-alt',
     );
     register_post_type('promo-package', $args);
 }
@@ -178,6 +179,7 @@ function create_metabox_package($meta_boxes_package) {
         'hierarchical'       => false,
         'menu_position'      => 3,
         'supports'           => $supports,
+        'menu_icon'           => 'dashicons-thumbs-up',
     );
     register_post_type('testimonial', $args);
 }
@@ -270,7 +272,4 @@ function create_metabox_testimonial($meta_boxes_testimonial) {
         ));
     }
 
-?>
-<?php
-	add_theme_support( 'post-thumbnails' );
 ?>

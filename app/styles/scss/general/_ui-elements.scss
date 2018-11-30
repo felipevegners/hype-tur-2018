@@ -20,3 +20,11 @@
     background: $main-color;
     border: 4px solid $second-color;
 }
+
+// Admin Posts Menu Icon
+
+#menu-posts .wp-menu-image.dashicons-before.dashicons-admin-post:before {
+    content: '\f130';
+}
+
+.dashicons { color: red; }
