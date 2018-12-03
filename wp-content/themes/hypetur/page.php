@@ -1,6 +1,6 @@
 <?php   get_header(); ?>
 
-<div class="promo-package">
+<div class="promo-package" style="position:relative;">
   <?php
     $args = array(
     'post_type'	  => 'promo-package',
@@ -69,7 +69,27 @@
                 <p class="mb-0">Saldo em:</p>
                 <h2><?php echo $package_meta['package_payment_parcels'][0] ?>x de: R$ <?php echo $package_meta['package_parcel_ammount'][0] ?></h2>
                 <small><?php echo $package_meta['package_price_disclaimer'][0] ?></small>
-                <button class="buy-package">Quero reservar este pacote</button>
+                <button class="buy-package" data-toggle="modal" data-target="#exampleModal">Quero reservar este pacote</button>
+                <!-- Modal -->
+                <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Fooooooo
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -103,6 +123,7 @@
   }
 ?>
 </div>
+
 
 <!-- SERVICES -->
 <section id="services" class="services">
@@ -328,7 +349,7 @@
         <p>Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art party, cardigan raw denim quinoa. Cray
           paleo tattooed, Truffaut skateboard street art PBR jean shorts.</p>
       </div>
-      <div class="col-md-5 last-post-column">
+      <div class="col-md-7 last-post-column">
         <h5><em>Último Post</em></h5>
         <hr>
         <?php
@@ -349,7 +370,7 @@
             endif;
           ?>
       </div>
-      <div class="col-md-5 offset-1 most-liked-tags">
+      <div class="col-md-5 most-liked-tags">
         <h5>Os termos mais buscados em nosso blog</h5>
         <hr>
         <p>Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art party.</p>

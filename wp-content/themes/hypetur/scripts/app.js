@@ -42,6 +42,10 @@ $(document).ready(function(){
 
   });
 
+  $('.buy-package').click(function(){
+      $('.promo-package').slick('setPosition', 0);
+  });
+
 function myFunction(e) {
     var elems = document.querySelector(".menu-active");
     if(elems !==null){

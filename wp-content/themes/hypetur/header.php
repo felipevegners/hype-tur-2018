@@ -51,43 +51,5 @@
         ?>
       </div>
     </nav>
-      <!-- <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="../">
-          <h1 class="-logo">
-            <?php bloginfo('name')?>
-          </h1>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav mt-2 mt-lg-0 ml-auto" onclick="myFunction(event);">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Serviços</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about-us">Quem Somos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/blog/">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contato</a>
-            </li>
-            <li class="nav-item">
-              <a class="social-icon" href="#"><img src="<?php echo get_template_directory_uri();?>/images/icons/hype-facebook.svg" alt="Acesse nosso Facebook"></a>
-            </li>
-            <li class="nav-item">
-              <a class="social-icon" href="#"><img src="<?php echo get_template_directory_uri();?>/images/icons/hype-instagram.svg" alt="Acesse nosso Instagram"></a>
-            </li>
-          </ul>
-        </div>
-      </nav> -->
     </div>
   </header>
